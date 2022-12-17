@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+
+/*-------- Header Menu -------- */
+
+#headerMenu{
+	display: table;
+}
+
+#headerMenu a:link{
+	font-size: larger;
+}
+
+/* ------- Menu Items ------ */
+
+.menuItem{
+	display: table-cell;
+	padding-right: 20px;
+}
+
+.menuItem:last-of-type{
+	padding-right: 0;
+}
+
+/* ------  Anchor tags ---------*/
+
+a {
+	color: cornflowerBlue;
+	text-decoration: none;
+}
+
+a:visited {
+	color: indigo;
+	
+}
+
+a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+a:active {
+	color: red;
+}
+
+/* --------- Button ----------- */
+button{
+	padding: 6px;
+	border-radius: 5px;
+}
+
+button[type=submit]{
+	font-weight: bold;
+}
+
+button:hover{
+	background-color: white;
+	color:green;
+}
+
+/* ---------- Input Fields ------- */
+input{
+	border: 1px solid;
+	border-radius: 4px;
+	border-color: green;
+	height: 20px;
+}
+
+/* -------- Page Heading -------- */
+
+.pageHeading{
+	color: darkblue;
+}
+
+/* -------- Table styling ---------- */
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th{
+	background: darkblue;
+	color: cornsilk;
+	font-size: larger;
+}
+
+th, td{
+	padding: 8px;
+}
+
+/* ---------- New Form section ---------- */
+
+.newForm{
+	border: 0;
+	padding: 0px;
+}
+
+.error{
+	color: red;
+	margin: 5px;
+}
+
+/* ---------- Positive Message ------- */
+
+.message{
+	font-weight: bold;
+	text-decoration: underline;
+	color: green;
+}
+
+/* ------- Error Message -------- */
+
+.errorMessage{
+	color:red;
+}
+
