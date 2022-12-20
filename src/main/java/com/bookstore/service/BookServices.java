@@ -66,6 +66,7 @@ public class BookServices {
 	}
 	
 	public void createNewBook() throws ServletException, IOException {
+		Part partImage = request.getPart("image");
 		String strCategoryId = request.getParameter("category");
 		String title = request.getParameter("bookTitle");
 		String author = request.getParameter("author");
@@ -73,7 +74,7 @@ public class BookServices {
 		String strPublishDate = request.getParameter("publishDate");
 		String strPrice = request.getParameter("price");
 		String description = request.getParameter("description");
-		Part partImage = request.getPart("image");
+		
 		
 		
 		Integer categoryId;
@@ -89,13 +90,25 @@ public class BookServices {
 				|| strPrice == null || strPrice.isEmpty()
 				|| description == null || description.isEmpty()
 				|| partImage == null || partImage.getSize() == 0) {
-			System.out.println(strCategoryId + title + author + isbn + strPublishDate + strPrice + description);
+			
 			String message = "Could not create the book: Some required fields were left blank";
 			String page = "message.jsp";
+			
 			request.setAttribute("message", message);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 			dispatcher.forward(request, response);
+		
 		}else {
+			
+			if(bookDao.findByTitle(title) != null) {
+				String message = "Could not create the book: A book with the title <i>" + title + "</i> already exists";
+				String page = "message.jsp";
+				request.setAttribute("message", message);
+				RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+				dispatcher.forward(request, response);
+				return;
+			}
+			
 			try {
 			categoryId = Integer.parseInt(strCategoryId);
 			price = Float.parseFloat(strPrice);
