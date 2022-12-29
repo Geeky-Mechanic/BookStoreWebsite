@@ -12,17 +12,17 @@
 </head>
 <body>
 
-	<div align="center">
+	<div class="center">
 		<h1>Bookstore Administration</h1>
 		<h2>Admin Login</h2>
 		
 		<c:if test="${message != null}">
-			<div align="center">
+			<div class="center">
 				<h4 class="errorMessage">${message}</h4>
 			</div>
 		</c:if>
 		<c:if test="${logout != null}">
-			<div align="center">
+			<div class="center">
 				<h4 class="message">${logout}</h4>
 			</div>
 		</c:if>

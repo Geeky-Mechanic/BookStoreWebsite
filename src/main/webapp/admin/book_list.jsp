@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,17 +16,17 @@
 
 	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">Book Management</h2>
 		<a href="create_book">Create New Book</a>
 	</div>
 	
  	<c:if test="${message != null}">
-		<div align="center">
+		<div class="center">
 			<h4 class="message">${message}</h4>
 		</div>
 	</c:if>
-	<div align="center">
+	<div class="center">
 		<table border="1" cellPadding="5">
 			<tr>
 				<th>Index</th>
@@ -41,16 +42,16 @@
 			<c:forEach var="book" items="${bookList}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
-					<td>${book.bookId}</td>
+					<td>${book.getBookId()}</td>
 					<td><img width="84px" height="110px" alt="${book.title}" src="data:image/jpg;base64, ${book.base64Image}"/></td>
-					<td>${book.title}</td>
-					<td>${book.author}</td>
-					<td>${book.category.name}</td>
-					<td>${book.price}</td>
-					<td>${book.lastUpdateTime}</td>
+					<td>${book.getTitle()}</td>
+					<td>${book.getAuthor()}</td>
+					<td>${book.getCategory().getName()}</td>
+					<td>$ ${book.getPrice()}</td>
+					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${book.getLastUpdateTime()}"/></td>
 					<td>
-						<a href="edit_book?id=${book.bookId}">Edit</a>
-						<a href="javascript:void(0);" class="deleteLink" id="${book.bookId}">Delete</a>
+						<a href="edit_book?bookId=${book.bookId}">Edit</a>
+						<a href="javascript:void(0);" class="deleteLink" id="${book.getBookId()}">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>	

@@ -11,8 +11,12 @@
 
 	<jsp:directive.include file="header.jsp" />
 	
-	<div align="center">
+	<div class="center">
 		<h3 class="message errorMessage">${message}</h3>
+	</div>
+	
+	<div class="center">
+		<a href="javascript:history.go(-1);"><b>Go Back</b></a>
 	</div>
 	
 	<jsp:directive.include file="footer.jsp"/>

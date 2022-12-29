@@ -10,7 +10,7 @@
 <body>
 	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">Admin Dashboard</h2>
 	</div>
 	
@@ -18,7 +18,7 @@
 	
 	<!-- ------------------------ QUICK ACTIONS SECTION ------------------ -->
 	
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">Quick Actions :</h2>
 		<a href="create_book">New Book</a>
 		<a href="create_user">New User</a>
@@ -31,21 +31,21 @@
 	<!-- ------------------------ RECENT SALES SECTION ------------------ -->
 	
 	
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">Recent Sales :</h2>
 	</div>
 	
 	<!-- ------------------------ RECENT REVIEWS SECTION ------------------ -->
 	
 	
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">Recent Reviews :</h2>
 	</div>
 	
 	<!-- ------------------------ STATISTICS SECTION ------------------ -->
 	
 	
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">Statistics :</h2>
 	</div>
 

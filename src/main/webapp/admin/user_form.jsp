@@ -22,7 +22,7 @@
 
 	<jsp:directive.include file="header.jsp" />
 	
-	<div align="center">
+	<div class="center">
 	
 		<h2 class="pageHeading">
 			<c:if test="${user != null}">
@@ -35,7 +35,7 @@
 		</h2>
 	</div>
 	
-	<div align="center">
+	<div class="center">
 		<c:if test="${user != null}">
 			<form action="update_user" method="post" id="userForm">
 			<input type="hidden" name="userId" value="${user.userId}"/>

@@ -9,7 +9,7 @@
 
 <body>
 	<jsp:directive.include file="header.jsp" />
-    <div align="center">
+    <div class="center">
 		MAIN
 	</div>
 	<jsp:directive.include file="footer.jsp" />

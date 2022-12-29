@@ -15,17 +15,17 @@
 
 	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
+	<div class="center">
 		<h2 class="pageHeading">User Management</h2>
 		<a href="create_user">Create New User</a>
 	</div>
 	
  	<c:if test="${message != null}">
-		<div align="center">
+		<div class="center">
 			<h4 class="message">${message}</h4>
 		</div>
 	</c:if>
-	<div align="center">
+	<div class="center">
 		<table border="1" cellPadding="5">
 			<tr>
 				<th>Index</th>

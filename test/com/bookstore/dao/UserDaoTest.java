@@ -1,10 +1,7 @@
 package com.bookstore.dao;
 
 import com.bookstore.entity.Users;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.Persistence;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,15 +14,13 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-public class UserDaoTest extends BaseDaoTest {
+public class UserDaoTest {
 
 	private static UserDao userDao;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		//create entity manager from entityManagerFactory
-		BaseDaoTest.beforeClass();
-		userDao = new UserDao(entityManager);
+		userDao = new UserDao();
 	}
 
 	@Test
@@ -139,6 +134,6 @@ public class UserDaoTest extends BaseDaoTest {
 
 	@AfterClass
 	public static void afterClass() throws Exception {
-		BaseDaoTest.tearDownAfterClass();
+		userDao.close();
 	}
 }

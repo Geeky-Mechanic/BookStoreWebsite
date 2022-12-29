@@ -4,29 +4,25 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.bookstore.entity.Category;
 
-public class CategoryDaoTest extends BaseDaoTest {
+public class CategoryDaoTest {
 
 	private static CategoryDao categoryDao;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		BaseDaoTest.beforeClass();
-		categoryDao = new CategoryDao(entityManager);
+		
+		categoryDao = new CategoryDao();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		BaseDaoTest.tearDownAfterClass();
+		categoryDao.close();
 	}
 
 	@Test

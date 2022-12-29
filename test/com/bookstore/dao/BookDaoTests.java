@@ -3,13 +3,13 @@ package com.bookstore.dao;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -20,19 +20,18 @@ import org.junit.Test;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 
-public class BookDaoTests extends BaseDaoTest {
+public class BookDaoTests {
 
 	private static BookDao bookDao;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		BaseDaoTest.beforeClass();
-		bookDao = new BookDao(entityManager);
+		bookDao = new BookDao();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		BaseDaoTest.tearDownAfterClass();
+		bookDao.close();
 	}
 
 	@Test
@@ -185,6 +184,38 @@ public class BookDaoTests extends BaseDaoTest {
 	public void testCount() {
 		System.out.println(bookDao.count());
 		assertEquals(2l,bookDao.count());
+	}
+	
+	@Test
+	public void testListByCategory() {
+		List<Book> catList = bookDao.listBooksByCategory(14);
+		for (Book book : catList) {
+			System.out.println(book.toString());
+		}
+		assertTrue(catList.size() > 0);
+	}
+	
+	@Test
+	public void testListNewBooks() {
+		List<Book> bookList = bookDao.listNewBooks();
+		
+		for(Book book : bookList) {
+			System.out.println(book.toString());
+		}
+		
+		assertTrue(bookList.size() == 4);
+	}
+	
+	@Test
+	public void testSearch() {
+		List<Book> bookList = bookDao.search("The Big Picture uniquely explores the entire Java EE");
+		
+		for(Book book : bookList) {
+			System.out.println(book.toString());
+		}
+		
+		assertTrue(bookList.size() > 0);
+		
 	}
 
 }

@@ -1,16 +1,14 @@
 package com.bookstore.dao;
 
 import com.bookstore.entity.Users;
-import javax.persistence.EntityManager;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class UserDao extends JpaDao<Users> implements GenericDao<Users>{
 
-    public UserDao(EntityManager entityManager) {
-        super(entityManager);
+    public UserDao() {
+        super();
     }
 
     @Override

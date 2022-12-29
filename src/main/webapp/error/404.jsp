@@ -14,6 +14,7 @@
 
 	<div align="center">
 		<h2>Sorry the requested page at URL : "${requestScope['javax.servlet.forward.request_uri']}" could not be found</h2>
+		<h3>${requestScope['javax.servlet.error.message']}</h3>
 	</div>
 	
 	<div align="center">

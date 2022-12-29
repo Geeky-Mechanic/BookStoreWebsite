@@ -1,10 +1,8 @@
-package com.bookstore.service;
+package com.bookstore.service.backend;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,14 +14,12 @@ import com.bookstore.security.PasswordHashing;
 
 public class UserServices {
 	private UserDao userDao;
-	private EntityManager entityManager;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
 	
-	public UserServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		this.entityManager = entityManager;
-		userDao = new UserDao(entityManager);
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+		userDao = new UserDao();
 		this.request = request;
 		this.response = response;
 	}

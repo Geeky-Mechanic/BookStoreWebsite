@@ -1,17 +1,17 @@
 package com.bookstore.controller.admin.categories;
 
-import com.bookstore.controller.BaseServlet;
-import com.bookstore.service.CategoryServices;
+import com.bookstore.service.backend.CategoryServices;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/admin/update_category")
-public class UpdateCategoryServlet extends BaseServlet {
+public class UpdateCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -22,7 +22,7 @@ public class UpdateCategoryServlet extends BaseServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
+		CategoryServices categoryServices = new CategoryServices(request, response);
 		categoryServices.updateCategory();
 	
 	}

@@ -1,4 +1,4 @@
-<div align="center">
+<div class="center">
 	<h4>Copyright (C) 2022 by Evergreen Books</h4>
 	<a href="about">About Us</a>
 	<a href="contact">Contact us</a>

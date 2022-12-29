@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +28,7 @@
 
 	<jsp:directive.include file="header.jsp" />
 	
-	<div align="center">
+	<div class="center">
 	
 		<h2 class="pageHeading">
 			<c:if test="${book != null}">
@@ -39,9 +41,9 @@
 		</h2>
 	</div>
 	
-	<div align="center">
+	<div class="center">
 		<c:if test="${book != null}">
-			<form action="update_book" enctype="multipart/form-data" method="post" id="bookForm">
+			<form action="edit_book" enctype="multipart/form-data" method="post" id="bookForm">
 			<input type="hidden" name="bookId" value="${book.bookId}"/>
 		</c:if>
 		<c:if test="${book == null}">	
@@ -54,7 +56,12 @@
 				<td>
 					<select name="category" id="category">
 						<c:forEach items="${categoryList}" var="category">
-							<option value="${category.categoryId}" >
+							<c:if test="${category.categoryId eq book.category.categoryId}">
+								<option value="${category.categoryId}" selected>
+							</c:if>
+							<c:if test="${category.categoryId ne book.category.categoryId}">
+								<option value="${category.categoryId}">
+							</c:if>
 								${category.name}
 							</option>
 						</c:forEach>
@@ -76,15 +83,15 @@
 			</tr>
 			
 			<tr>
-				<td align="right">Published Date: </td>
-				<td align="left"><input type="text" name="publishDate" id="publishDate" size="20" value="${book.publishDate}"/></td>
+				<td align="right">Published Date <br/> (dd/MM/yyyy): </td>
+				<td align="left"><input type="text" name="publishDate" id="publishDate" size="20" value="<fmt:formatDate pattern='dd/MM/yyyy' value='${book.publishDate}'/>"/></td>
 			</tr>
 			
 			<tr>
 				<td align="right">Book Image: </td>
 				<td align="left">
 					<input type="file" name="image" id="image" size="20"/><br/>
-					<img id="thumbnail" alt="Image Preview" style="width:20%; margin-top:10px;"/>
+					<img id="thumbnail" alt="Image Preview" style="width:20%; margin-top:10px;" src="data:image/jpg;base64, ${book.base64Image}" width="84px" height="110px" />
 				</td>
 			</tr>
 			
@@ -95,13 +102,13 @@
 			
 			<tr>
 				<td align="right">Description: </td>
-				<td align="left"><textarea rows="5" cols="50" name="description" id="description" ></textarea></td>
+				<td align="left"><textarea rows="20" cols="50" name="description" id="description" >${book.description}</textarea></td>
 			</tr>
 		
 			<tr>
 				<td colspan="2" align="center">
 					<button type="submit">Save</button>
-					<button id="cancel">Cancel</button>
+					<button type="button" id="cancel">Cancel</button>
 				</td>
 			</tr>
 		</table>
@@ -118,7 +125,9 @@
 	$(document).ready(function(){
 		
 
-	    $("#publishDate").datepicker();
+	    $("#publishDate").datepicker({
+	    	dateFormat:"dd/mm/yy"
+	    });
 		
 	    $("#image").change(function(){
 	    	showImageThumbnail(this); 
@@ -131,7 +140,12 @@
 				author:"required",
 				isbn:"required",
 				publishDate:"required",
+				
+				<c:if test="${book == null}">
 				image:"required",
+				</c:if>
+				
+				
 				price: "required",
 				description:"required"
 			},
@@ -140,7 +154,11 @@
 				author:"Please enter an author name",
 				isbn:"Please enter an ISBN number",
 				publishDate:"Please enter a publication date",
+				
+				<c:if test="${book == null}">
 				image:"Please enter an image",
+				</c:if>
+				
 				price: "Please enter a price",
 				description:"Please enter a description",
 				category: "Please choose a category"

@@ -9,15 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.controller.BaseServlet;
-
 @WebServlet("/admin/")
-public class AdminHomeServlet extends BaseServlet {
+public class AdminHomeServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
        
     public AdminHomeServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 

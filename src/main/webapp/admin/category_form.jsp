@@ -22,7 +22,7 @@
 
 	<jsp:directive.include file="header.jsp" />
 	
-	<div align="center">
+	<div class="center">
 	
 		<h2 class="pageHeading">
 			<c:if test="${category != null}">
@@ -37,7 +37,7 @@
 		</h2>
 	</div>
 	
-	<div align="center">
+	<div class="center">
 		<c:if test="${category != null}">
 			<form action="update_category" method="post" id="categoryForm">
 			<input type="hidden" name="categoryId" value="${category.categoryId}"/>

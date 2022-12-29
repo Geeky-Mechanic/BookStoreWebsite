@@ -3,14 +3,12 @@ package com.bookstore.dao;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import com.bookstore.entity.Book;
 
 public class BookDao extends JpaDao<Book> implements GenericDao<Book>{
 
-	public BookDao(EntityManager entityManager) {
-		super(entityManager);
+	public BookDao() {
+		super();
 	}
 
 	@Override
@@ -49,10 +47,22 @@ public class BookDao extends JpaDao<Book> implements GenericDao<Book>{
 	public List<Book> listAll() {
 		return super.findWithNamedQuery("Book.findAll");
 	}
+	
+	public List<Book> listNewBooks() {
+		return super.findWithNamedQuery("Book.listNewBooks");
+	}
 
 	@Override
 	public long count() {
 		return super.countWithNamedQuery("Book.countAll");
+	}
+	
+	public List<Book> listBooksByCategory(Integer categoryId){
+		return super.findWithNamedQuery("Book.findByCategory", "categoryId", categoryId);
+	}
+	
+	public List<Book> search(String keyword){
+		return super.findWithNamedQuery("Book.search", "keyword", keyword);
 	}
 
 }
